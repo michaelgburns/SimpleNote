@@ -20,6 +20,7 @@ namespace SimpleNote.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public System.Data.Entity.DbSet<SimpleNote.Models.Note> Notes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SimpleNote.Models;
+using System.Threading;
+using Microsoft.AspNet.Identity;
 
 namespace SimpleNote.Controllers
 {
     public class MyNotesController : Controller
     {
-        private SimpleNoteContext db = new SimpleNoteContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: MyNotes
         public ActionResult Index()
@@ -38,7 +40,14 @@ namespace SimpleNote.Controllers
         // GET: MyNotes/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Note
+            {
+                Id = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UserId = new Guid(User.Identity.GetUserId())
+            };
+            return View(model);
         }
 
         // POST: MyNotes/Create
@@ -50,7 +59,6 @@ namespace SimpleNote.Controllers
         {
             if (ModelState.IsValid)
             {
-                note.Id = Guid.NewGuid();
                 db.Notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
