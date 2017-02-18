@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace SimpleNote.Controllers
 {
+    [Authorize]
     public class MyNotesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
