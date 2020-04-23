@@ -15,6 +15,9 @@ namespace SimpleNote.Controllers
     [Authorize]
     public class MyNotesController : Controller
     {
+
+        // test commit 
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: MyNotes
