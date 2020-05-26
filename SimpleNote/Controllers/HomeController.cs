@@ -8,6 +8,7 @@ namespace SimpleNote.Controllers
 {
     public class HomeController : Controller
     {
+		// testing git connection
         public ActionResult Index()
         {
             return View();
