@@ -17,7 +17,6 @@ namespace SimpleNote.Controllers
     {
 
         // test commit 
-        // testing git sync
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
